@@ -1,5 +1,6 @@
 package com.example.ehdee.heavyweight;
 
+import com.example.ehdee.heavyweight.model.HeavyweightResponse;
 import com.example.ehdee.heavyweight.model.Reign;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,7 +12,11 @@ import java.util.List;
 
 public abstract class TestBase {
     protected Date buildDate(int year, int month, int day) {
-        return new DateTime().withDate(year, month, day).withTimeAtStartOfDay().toDate();
+        return new DateTime().withDate(year, month, day).withTimeAtStartOfDay().toLocalDateTime().toDate();
+    }
+
+    protected HeavyweightResponse buildValidHeavyweightResponse() {
+        return new HeavyweightResponse.Builder().withReigns(buildValidReigns()).build();
     }
 
     protected List<Reign> buildValidReigns() {
@@ -20,7 +25,7 @@ public abstract class TestBase {
         return expectedReigns;
     }
 
-    protected String buildValidReignsString() throws JsonProcessingException {
-        return new ObjectMapper().writeValueAsString(buildValidReigns());
+    protected String buildValidHeavyweightResponseString() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(buildValidHeavyweightResponse());
     }
 }

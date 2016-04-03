@@ -1,5 +1,5 @@
 # heavyweight
-A Spring 4 web application that allows the user to see who the heavyweight boxing champion of the world was on a specified date (and not much else!).
+A Spring 4 web application that allows the user to see who the heavyweight boxing champion of the world was on a specified date (and not much else!). The data is taken from Wikipedia and stuck in a document database. This database can be updated.
 
 ## System requirements
 * Java 7
@@ -17,7 +17,8 @@ A Spring 4 web application that allows the user to see who the heavyweight boxin
 * mvn tomcat7:deploy
 
 ## Useage
-* http://localhost:8080/heavyweight/query?date=yyyy-mm-dd
+* Service will deploy to `http://localhost:8080/heavyweight`
+* Resource (GET): `/query?date=yyyy-mm-dd`
     * to query by date
-* http://localhost:8080/heavyweight/update
+* Resource (GET): `/update`
     * to update the database

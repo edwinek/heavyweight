@@ -1,13 +1,11 @@
 package com.example.ehdee.heavyweight.service;
 
-import com.example.ehdee.heavyweight.model.Reign;
-
-import java.util.List;
+import com.example.ehdee.heavyweight.model.HeavyweightResponse;
 
 public interface Service {
 
     void performETL();
 
-    List<Reign> getByDate(String isoDateString);
+    HeavyweightResponse getByDate(String isoDateString);
 
 }

@@ -1,7 +1,7 @@
 package com.example.ehdee.heavyweight.service;
 
 import com.example.ehdee.heavyweight.exception.HeavyweightServiceDateException;
-import com.example.ehdee.heavyweight.model.Reign;
+import com.example.ehdee.heavyweight.model.HeavyweightResponse;
 import com.example.ehdee.heavyweight.parser.Parser;
 import com.example.ehdee.heavyweight.persistence.ReignRepository;
 import org.joda.time.format.ISODateTimeFormat;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
-import java.util.List;
 
 @Component
 public class ServiceImpl implements Service {
@@ -31,7 +30,7 @@ public class ServiceImpl implements Service {
     }
 
     @Override
-    public List<Reign> getByDate(String isoDateString) {
+    public HeavyweightResponse getByDate(String isoDateString) {
 
         Date date;
 
@@ -48,8 +47,7 @@ public class ServiceImpl implements Service {
         if (date.before(earliestReign)) {
             throw new HeavyweightServiceDateException("Date specified pre-dates all reigns: [" + isoDateString + "].");
         }
-
-        return reignRepository.queryReignByDate(date);
+        return new HeavyweightResponse.Builder().withReigns(reignRepository.queryReignByDate(date)).build();
     }
 
 }

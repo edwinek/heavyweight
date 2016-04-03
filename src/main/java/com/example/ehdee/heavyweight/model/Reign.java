@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 @Document
-public class Reign {
+public class Reign extends BaseModel {
 
     private String champion;
     @Id
@@ -129,16 +129,6 @@ public class Reign {
 
     public void setReignEnded(Date reignEnded) {
         this.reignEnded = reignEnded;
-    }
-
-    @Override
-    public String toString() {
-        return ReflectionToStringBuilder.toString(this);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return EqualsBuilder.reflectionEquals(this, obj);
     }
 
 }

@@ -4,7 +4,7 @@ package com.example.ehdee.heavyweight.service;
 import com.example.ehdee.heavyweight.TestBase;
 import com.example.ehdee.heavyweight.config.ServiceTestConfig;
 import com.example.ehdee.heavyweight.exception.HeavyweightServiceDateException;
-import com.example.ehdee.heavyweight.model.Reign;
+import com.example.ehdee.heavyweight.model.HeavyweightResponse;
 import com.example.ehdee.heavyweight.persistence.ReignRepository;
 import org.joda.time.DateTime;
 import org.joda.time.format.ISODateTimeFormat;
@@ -19,7 +19,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
-import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.mockito.Mockito.*;
@@ -104,13 +103,12 @@ public class ServiceTest extends TestBase {
     @Test
     public void should_return_expected_reigns_for_valid_date() {
 
-        List<Reign> expectedReigns = buildValidReigns();
         String queryDateString = "2015-1-1";
         Date date = ISODateTimeFormat.date().parseDateTime(queryDateString).toDate();
 
         Mockito.when(reignRepository.queryReignByDate(date)).thenReturn(buildValidReigns());
 
-        Assert.assertThat("Expected reigns returns for valid date.", service.getByDate(queryDateString), equalTo(expectedReigns));
+        Assert.assertThat("Expected reigns returns for valid date.", service.getByDate(queryDateString), equalTo(buildValidHeavyweightResponse()));
 
         Mockito.verify(reignRepository, times(1)).queryReignByDate(date);
     }
@@ -118,13 +116,12 @@ public class ServiceTest extends TestBase {
     @Test
     public void should_return_expected_reigns_for_valid_minimum_boundary_date() {
 
-        List<Reign> expectedReigns = buildValidReigns();
         String queryDateString = "1885-8-29";
         Date date = ISODateTimeFormat.date().parseDateTime(queryDateString).toDate();
 
-        Mockito.when(reignRepository.queryReignByDate(date)).thenReturn(expectedReigns);
+        Mockito.when(reignRepository.queryReignByDate(date)).thenReturn(buildValidReigns());
 
-        Assert.assertThat("Expected reigns returns for valid earliest date.", service.getByDate(queryDateString), equalTo(expectedReigns));
+        Assert.assertThat("Expected reigns returns for valid earliest date.", service.getByDate(queryDateString), equalTo(buildValidHeavyweightResponse()));
 
         Mockito.verify(reignRepository, times(1)).queryReignByDate(date);
     }
@@ -132,13 +129,12 @@ public class ServiceTest extends TestBase {
     @Test
     public void should_return_expected_reigns_for_valid_today_date() {
 
-        List<Reign> expectedReigns = buildValidReigns();
         DateTime todayDateTime = new DateTime().withTimeAtStartOfDay();
         String todayDateTimeString = ISODateTimeFormat.date().print(todayDateTime);
 
-        Mockito.when(reignRepository.queryReignByDate(todayDateTime.toDate())).thenReturn(expectedReigns);
+        Mockito.when(reignRepository.queryReignByDate(todayDateTime.toDate())).thenReturn(buildValidReigns());
 
-        Assert.assertThat("Expected reigns returns for valid today date.", service.getByDate(todayDateTimeString), equalTo(expectedReigns));
+        Assert.assertThat("Expected reigns returns for valid today date.", service.getByDate(todayDateTimeString), equalTo(buildValidHeavyweightResponse()));
 
         Mockito.verify(reignRepository, times(1)).queryReignByDate(todayDateTime.toDate());
     }

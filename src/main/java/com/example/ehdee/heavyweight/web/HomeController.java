@@ -1,5 +1,6 @@
 package com.example.ehdee.heavyweight.web;
 
+import com.example.ehdee.heavyweight.model.HeavyweightResponse;
 import com.example.ehdee.heavyweight.model.Reign;
 import com.example.ehdee.heavyweight.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,13 @@ public class HomeController {
     }
 
     @RequestMapping(value = "update", method = RequestMethod.GET, produces = "application/json")
-    public RestResponse update() {
+    public String update() {
         service.performETL();
-        return new RestResponse(HttpStatus.OK, "Database updated successfully.");
+        return "Database updated successfully.";
     }
 
     @RequestMapping(value = "query", method = RequestMethod.GET, produces = "application/json")
-    public List<Reign> get(@RequestParam(value="date") String date) {
+    public HeavyweightResponse get(@RequestParam(value="date") String date) {
         return service.getByDate(date);
     }
 

@@ -2,6 +2,7 @@ package com.example.ehdee.heavyweight.web;
 
 import com.example.ehdee.heavyweight.TestBase;
 import com.example.ehdee.heavyweight.config.HomeControllerTestConfig;
+import com.example.ehdee.heavyweight.model.HeavyweightResponse;
 import com.example.ehdee.heavyweight.service.Service;
 import com.example.ehdee.heavyweight.web.HomeController;
 import org.junit.After;
@@ -44,11 +45,11 @@ public class HomeControllerTest extends TestBase {
 
         String queryString = "2000-1-1";
 
-        Mockito.when(service.getByDate(queryString)).thenReturn(buildValidReigns());
+        Mockito.when(service.getByDate(queryString)).thenReturn(buildValidHeavyweightResponse());
         MvcResult resultActions = mockController.perform(get("/query?date=" + queryString)).andReturn();
 
         Assert.assertThat("Expected header is returned.", resultActions.getResponse().getStatus(), equalTo(HttpStatus.OK.value()));
-        Assert.assertThat("Expected body is returned.", resultActions.getResponse().getContentAsString(), equalTo(buildValidReignsString()));
+        Assert.assertThat("Expected body is returned.", resultActions.getResponse().getContentAsString(), equalTo(buildValidHeavyweightResponseString()));
 
     }
 
