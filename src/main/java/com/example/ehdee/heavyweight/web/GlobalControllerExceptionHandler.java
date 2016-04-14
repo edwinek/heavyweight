@@ -25,7 +25,7 @@ class GlobalControllerExceptionHandler {
     @ResponseBody
     @ExceptionHandler({MissingServletRequestParameterException.class, NoHandlerFoundException.class})
     public ResponseEntity<String> handleConflict() {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad juju.");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Bad request.");
     }
 
 }
