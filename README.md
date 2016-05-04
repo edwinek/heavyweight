@@ -9,7 +9,7 @@ A Spring 4 web application that allows the user to see who the heavyweight boxin
 
 ## Notes
 * Uses the Maven Tomcat Plugin v7
-    * pom.xml specifies that the server should be called "TomcatServer" but this can be changed.
+    * The pom.xml specifies that the server should be called "TomcatServer" but this can be changed.
 
 ## Deployment
 * Start Tomcat
