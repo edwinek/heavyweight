@@ -35,7 +35,7 @@ public class ParserImpl implements Parser {
         } catch (IOException e) {
             throw new RuntimeException("There was as issue connecting to url: " + e.getMessage());
         }
-        logger.info("Retrieved list of Reigns from URL.");
+        logger.info("Retrieved list of Reigns from URL {}.", url);
         return fromJsoupDocument(doc);
     }
 
