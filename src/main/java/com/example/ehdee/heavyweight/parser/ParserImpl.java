@@ -6,6 +6,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -22,6 +24,9 @@ public class ParserImpl implements Parser {
     private Document doc;
     private SimpleDateFormat parseFormat = new SimpleDateFormat("MMMM dd, yyyy");
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+
     @Override
     public List<Reign> fromUrl(String url) {
 
@@ -30,6 +35,7 @@ public class ParserImpl implements Parser {
         } catch (IOException e) {
             throw new RuntimeException("There was as issue connecting to url: " + e.getMessage());
         }
+        logger.info("Retrieved list of Reigns from URL.");
         return fromJsoupDocument(doc);
     }
 

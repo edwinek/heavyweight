@@ -5,6 +5,8 @@ import com.example.ehdee.heavyweight.model.HeavyweightResponse;
 import com.example.ehdee.heavyweight.parser.Parser;
 import com.example.ehdee.heavyweight.persistence.ReignRepository;
 import org.joda.time.format.ISODateTimeFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +14,8 @@ import java.util.Date;
 
 @Component
 public class ServiceImpl implements Service {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private Parser parser;
@@ -31,6 +35,8 @@ public class ServiceImpl implements Service {
 
     @Override
     public HeavyweightResponse getByDate(String isoDateString) {
+
+        logger.info("Retrieving Reigns for date {}.", isoDateString);
 
         Date date;
 
