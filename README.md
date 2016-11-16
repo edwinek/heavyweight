@@ -10,6 +10,8 @@ A Spring 4 web application that allows the user to see who the heavyweight boxin
 ## Notes
 * Uses the Maven Tomcat Plugin v7
     * The pom.xml specifies that the server should be called "TomcatServer" but this can be changed.
+* UPDATE: It's now necessary to add a hosts file route from mongoip -> 127.0.0.1 in your hostsfile
+    * This is for compatibility with heavyweight-deploy
 
 ## Deployment
 * Start Tomcat
