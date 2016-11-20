@@ -62,11 +62,11 @@ public class ParserImpl implements Parser {
             if (columns.size() > 1) {
                 i++;
 
-                String nationality = extract(columns.get(4));
-                String champion = extract(columns.get(2));
-                String recognition = extract(columns.get(3));
-                String reignBeganString = extract(columns.get(0));
-                String reignEndedString = extract(columns.get(1));
+                String nationality = extract(columns.get(1));
+                String champion = extract(columns.get(0));
+                String recognition = extract(columns.get(2));
+                String reignBeganString = extract(columns.get(3));
+                String reignEndedString = extract(columns.get(4));
 
                 Date reignBegan;
                 Date reignEnded;
@@ -77,7 +77,7 @@ public class ParserImpl implements Parser {
                     throw new RuntimeException("Unable to parse reign began date, \"" + reignBeganString + "\": " + e.getMessage());
                 }
 
-                if (columns.get(1).text().equals("Present")) {
+                if (columns.get(4).text().equals("Present")) {
                     reignEnded = null;
                 } else {
                     try {
