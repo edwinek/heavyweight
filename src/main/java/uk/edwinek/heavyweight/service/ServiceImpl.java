@@ -1,6 +1,5 @@
 package uk.edwinek.heavyweight.service;
 
-import org.joda.time.format.ISODateTimeFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,9 @@ import uk.edwinek.heavyweight.model.Reign;
 import uk.edwinek.heavyweight.parser.Parser;
 import uk.edwinek.heavyweight.persistence.ReignRepository;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 @Component
@@ -23,7 +24,7 @@ public class ServiceImpl implements Service {
     private Parser parser;
     @Autowired
     private ReignRepository reignRepository;
-    private Date earliestReign;
+    private LocalDate earliestReign;
 
     @Override
     public void performETL() {
@@ -36,19 +37,19 @@ public class ServiceImpl implements Service {
 
         logger.info("Retrieving Reigns for date {}.", isoDateString);
 
-        Date date;
+        LocalDate date;
 
         try {
-            date = ISODateTimeFormat.date().parseDateTime(isoDateString).toDate();
-        } catch (IllegalArgumentException e) {
+            date = DateTimeFormatter.ISO_LOCAL_DATE.parse(isoDateString, LocalDate::from);
+        } catch (DateTimeParseException e) {
             throw new HeavyweightServiceDateException("Invalid date specified: [" + isoDateString + "].");
         }
 
-        if (date.after(new Date())) {
+        if (date.isAfter(LocalDate.now())) {
             throw new HeavyweightServiceDateException("Future date specified: [" + isoDateString + "].");
         }
 
-        if (date.before(earliestReign)) {
+        if (date.isBefore(earliestReign)) {
             throw new HeavyweightServiceDateException("Date specified pre-dates all reigns: [" + isoDateString + "].");
         }
         List<Reign> retrievedReigns = reignRepository.queryReignByDate(date);

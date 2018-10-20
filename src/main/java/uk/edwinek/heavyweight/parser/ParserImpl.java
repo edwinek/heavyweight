@@ -12,10 +12,10 @@ import uk.edwinek.heavyweight.model.Reign;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Component
@@ -23,7 +23,7 @@ public class ParserImpl implements Parser {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private Document doc;
-    private SimpleDateFormat parseFormat = new SimpleDateFormat("MMMM dd, yyyy");
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy");
 
     @Override
     public List<Reign> fromUrl(String url) {
@@ -66,12 +66,12 @@ public class ParserImpl implements Parser {
                 String reignBeganString = extract(columns.get(3));
                 String reignEndedString = extract(columns.get(4));
 
-                Date reignBegan;
-                Date reignEnded;
+                LocalDate reignBegan;
+                LocalDate reignEnded;
 
                 try {
-                    reignBegan = parseFormat.parse(reignBeganString);
-                } catch (ParseException e) {
+                    reignBegan = formatter.parse(reignBeganString, LocalDate::from);
+                } catch (DateTimeParseException e) {
                     throw new RuntimeException("Unable to parse reign began date, \"" + reignBeganString + "\": " + e.getMessage());
                 }
 
@@ -79,8 +79,8 @@ public class ParserImpl implements Parser {
                     reignEnded = null;
                 } else {
                     try {
-                        reignEnded = parseFormat.parse(reignEndedString);
-                    } catch (ParseException e) {
+                        reignEnded = formatter.parse(reignEndedString, LocalDate::from);
+                    } catch (DateTimeParseException e) {
                         throw new RuntimeException("Unable to parse reign ended date, \"" + reignEndedString + "\": " + e.getMessage());
                     }
                 }

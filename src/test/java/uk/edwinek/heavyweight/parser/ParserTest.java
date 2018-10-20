@@ -9,6 +9,7 @@ import uk.edwinek.heavyweight.TestBase;
 import uk.edwinek.heavyweight.config.ParserTestConfig;
 import uk.edwinek.heavyweight.model.Reign;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +34,8 @@ class ParserTest extends TestBase {
                         .withRecognition("Universal")
                         .withNationality("American")
                         .withId("1")
-                        .withReignBegan(buildDate(1885, 8, 29))
-                        .withReignEnded(buildDate(1892, 9, 7))
+                        .withReignBegan(LocalDate.of(1885, 8, 29))
+                        .withReignEnded(LocalDate.of(1892, 9, 7))
                         .build());
         expectedReigns.add(
                 new Reign
@@ -43,8 +44,8 @@ class ParserTest extends TestBase {
                         .withRecognition("Universal")
                         .withNationality("American")
                         .withId("2")
-                        .withReignBegan(buildDate(1892, 9, 7))
-                        .withReignEnded(buildDate(1897, 3, 17))
+                        .withReignBegan(LocalDate.of(1892, 9, 7))
+                        .withReignEnded(LocalDate.of(1897, 3, 17))
                         .build());
 
 

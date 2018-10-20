@@ -7,7 +7,6 @@ ext {
     hamcrestVersion = '2.0.0.0'
     jacksonVersion = '2.9.6'
     javaxVersion = '4.0.1'
-    jodaVersion = '2.10'
     jsoupVersion = '1.11.3'
     junitVersion = '5.2.0'
     mockitoVersion = '2.23.0'
@@ -18,10 +17,10 @@ ext {
 
 dependencies {
     compile "org.apache.logging.log4j:log4j-slf4j18-impl:${project.slf4jVersion}"
-    compile "joda-time:joda-time:${project.jodaVersion}"
     compile "javax.servlet:javax.servlet-api:${project.javaxVersion}"
     compile "org.apache.commons:commons-lang3:${project.apacheCommonsLang3Version}"
     compile "com.fasterxml.jackson.core:jackson-databind:${project.jacksonVersion}"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${project.jacksonVersion}"
     compile "org.jsoup:jsoup:${project.jsoupVersion}"
     compile "org.springframework:spring-context:${project.springVersion}"
     compile "org.springframework:spring-core:${project.springVersion}"

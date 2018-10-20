@@ -2,19 +2,13 @@ package uk.edwinek.heavyweight;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.joda.time.DateTime;
 import uk.edwinek.heavyweight.model.HeavyweightResponse;
 import uk.edwinek.heavyweight.model.Reign;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public abstract class TestBase {
-    protected Date buildDate(int year, int month, int day) {
-        return new DateTime().withDate(year, month, day).withTimeAtStartOfDay().toLocalDateTime().toDate();
-    }
-
     protected HeavyweightResponse buildValidHeavyweightResponse() {
         return new HeavyweightResponse.Builder().withReigns(buildValidReigns()).build();
     }

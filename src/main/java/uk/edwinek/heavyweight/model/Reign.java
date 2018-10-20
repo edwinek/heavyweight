@@ -3,7 +3,7 @@ package uk.edwinek.heavyweight.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Document
 public class Reign extends BaseModel {
@@ -13,13 +13,14 @@ public class Reign extends BaseModel {
     private String id;
     private String nationality;
     private String recognition;
-    private Date reignBegan;
-    private Date reignEnded;
+    private LocalDate reignBegan;
+    private LocalDate reignEnded;
 
     public Reign() {
     }
 
-    public Reign(String champion, String id, String nationality, String recognition, Date reignBegan, Date reignEnded) {
+    public Reign(String champion, String id, String nationality, String recognition, LocalDate reignBegan,
+                 LocalDate reignEnded) {
         this.champion = champion;
         this.id = id;
         this.nationality = nationality;
@@ -69,19 +70,19 @@ public class Reign extends BaseModel {
         this.recognition = recognition;
     }
 
-    public Date getReignBegan() {
+    public LocalDate getReignBegan() {
         return reignBegan;
     }
 
-    public void setReignBegan(Date reignBegan) {
+    public void setReignBegan(LocalDate reignBegan) {
         this.reignBegan = reignBegan;
     }
 
-    public Date getReignEnded() {
+    public LocalDate getReignEnded() {
         return reignEnded;
     }
 
-    public void setReignEnded(Date reignEnded) {
+    public void setReignEnded(LocalDate reignEnded) {
         this.reignEnded = reignEnded;
     }
 
@@ -91,8 +92,8 @@ public class Reign extends BaseModel {
         private String id;
         private String nationality;
         private String recognition;
-        private Date reignBegan;
-        private Date reignEnded;
+        private LocalDate reignBegan;
+        private LocalDate reignEnded;
 
         public Builder withChampion(String champion) {
             this.champion = champion;
@@ -114,12 +115,12 @@ public class Reign extends BaseModel {
             return this;
         }
 
-        public Builder withReignBegan(Date reignBegan) {
+        public Builder withReignBegan(LocalDate reignBegan) {
             this.reignBegan = reignBegan;
             return this;
         }
 
-        public Builder withReignEnded(Date reignEnded) {
+        public Builder withReignEnded(LocalDate reignEnded) {
             this.reignEnded = reignEnded;
             return this;
         }

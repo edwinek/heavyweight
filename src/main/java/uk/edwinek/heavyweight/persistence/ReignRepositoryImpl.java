@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import uk.edwinek.heavyweight.model.Reign;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class ReignRepositoryImpl implements ReignRepositoryCustom {
@@ -16,7 +16,7 @@ public class ReignRepositoryImpl implements ReignRepositoryCustom {
     private MongoOperations mongoOperations;
 
     @Override
-    public Date getEarliestReignDate() {
+    public LocalDate getEarliestReignDate() {
         Query query = new Query().with(new Sort(Sort.Direction.ASC, "reignBegan")).limit(1);
         return mongoOperations.find(query, Reign.class).get(0).getReignBegan();
     }
@@ -31,7 +31,7 @@ public class ReignRepositoryImpl implements ReignRepositoryCustom {
     }
 
     @Override
-    public List<Reign> queryReignByDate(Date date) {
+    public List<Reign> queryReignByDate(LocalDate date) {
         Query query = new Query();
         Criteria criteria = new Criteria();
         criteria.andOperator(
