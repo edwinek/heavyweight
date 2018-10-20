@@ -6,45 +6,29 @@ ext {
     apacheCommonsLang3Version = '3.8.1'
     jacksonVersion = '2.9.6'
     javaxVersion = '4.0.1'
-    jclVersion = '1.7.25'
     jodaVersion = '2.10'
     jsoupVersion = '1.11.3'
     junitVersion = '4.12'
-    logbackClassicVersion = '1.2.3'
-    mockitoVersion = '1.9.5'
+    mockitoVersion = '2.23.0'
+    slf4jVersion = '2.11.1'
     springMongoVersion = '2.1.1.RELEASE'
     springVersion = '5.1.1.RELEASE'
 }
 
 dependencies {
-    compile "org.slf4j:jcl-over-slf4j:${project.jclVersion}"
-    compile "ch.qos.logback:logback-classic:${project.logbackClassicVersion}"
+    compile "org.apache.logging.log4j:log4j-slf4j18-impl:${project.slf4jVersion}"
     compile "joda-time:joda-time:${project.jodaVersion}"
     compile "javax.servlet:javax.servlet-api:${project.javaxVersion}"
     compile "org.apache.commons:commons-lang3:${project.apacheCommonsLang3Version}"
     compile "com.fasterxml.jackson.core:jackson-databind:${project.jacksonVersion}"
     compile "org.jsoup:jsoup:${project.jsoupVersion}"
-    compile ("org.springframework:spring-context:${project.springVersion}"){
-        exclude group: "commons-logging", module: "commons-logging"
-    }
-    compile ("org.springframework:spring-core:${project.springVersion}"){
-        exclude group: "commons-logging", module: "commons-logging"
-    }
-    compile ("org.springframework:spring-web:${project.springVersion}"){
-        exclude group: "commons-logging", module: "commons-logging"
-    }
-    compile ("org.springframework:spring-webmvc:${project.springVersion}"){
-        exclude group: "commons-logging", module: "commons-logging"
-    }
-    compile ("org.springframework:spring-jdbc:${project.springVersion}"){
-        exclude group: "commons-logging", module: "commons-logging"
-    }
-    compile ("org.springframework.data:spring-data-mongodb:${project.springMongoVersion}"){
-        exclude group: "commons-logging", module: "commons-logging"
-    }
-    testCompile ("org.springframework:spring-test:${project.springVersion}"){
-        exclude group: "commons-logging", module: "commons-logging"
-    }
+    compile "org.springframework:spring-context:${project.springVersion}"
+    compile "org.springframework:spring-core:${project.springVersion}"
+    compile "org.springframework:spring-web:${project.springVersion}"
+    compile "org.springframework:spring-webmvc:${project.springVersion}"
+    compile "org.springframework:spring-jdbc:${project.springVersion}"
+    compile "org.springframework.data:spring-data-mongodb:${project.springMongoVersion}"
+    testCompile "org.springframework:spring-test:${project.springVersion}"
     testCompile "junit:junit:${project.junitVersion}"
     testCompile "org.mockito:mockito-core:${project.mockitoVersion}"
 }
