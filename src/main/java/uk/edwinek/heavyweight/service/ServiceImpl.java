@@ -31,6 +31,8 @@ public class ServiceImpl implements Service {
 
     @Override
     public void performETL() {
+        logger.info("###########Updating");
+        System.out.println("###########################");
         reignRepository.loadDB(parser.fromUrl(REIGNS_URL));
         earliestReign = reignRepository.getEarliestReignDate();
     }

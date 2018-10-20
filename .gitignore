@@ -4,3 +4,6 @@
 .classpath
 .project
 *.iml
+.gradle/
+build/
+out/
