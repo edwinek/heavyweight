@@ -22,7 +22,7 @@ A Spring 5 web application that allows the user to see who the heavyweight boxin
 * `./gradlew clean war cargoReDeployRemote`
 
 ## Manual Deployment to container
-* See the [`tomcat-maanger-mongo` project](https://github.com/edwinek/tomcat-manager-mongo) for a ready-to-use container script 
+* See the [`tomcat-manager-mongo` project](https://github.com/edwinek/tomcat-manager-mongo) for a ready-to-use container script 
 
 ## Automated Deployment
 * See the [`heavyweight-deploy` project](https://github.com/edwinek/heavyweight-deploy) for a containerised version of this project.
