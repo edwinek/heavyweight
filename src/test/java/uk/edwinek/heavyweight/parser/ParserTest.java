@@ -1,29 +1,29 @@
 package uk.edwinek.heavyweight.parser;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.edwinek.heavyweight.TestBase;
 import uk.edwinek.heavyweight.config.ParserTestConfig;
 import uk.edwinek.heavyweight.model.Reign;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {ParserTestConfig.class})
-public class ParserTest extends TestBase {
+class ParserTest extends TestBase {
 
     @Autowired
     private Parser parser;
 
     @Test
-    public void should_return_expected_reigns_from_file() {
+    void should_return_expected_reigns_from_file() {
 
         List<Reign> expectedReigns = new ArrayList<>();
         expectedReigns.add(
@@ -50,7 +50,8 @@ public class ParserTest extends TestBase {
 
         List<Reign> reigns = parser.fromFile("TestList.html");
 
-        Assert.assertThat("Check that expected reigns read from file.", parser.fromFile("TestList.html"), equalTo(expectedReigns));
+        assertThat("Check that expected reigns read from file.", parser.fromFile("TestList.html"),
+                equalTo(expectedReigns));
 
     }
 

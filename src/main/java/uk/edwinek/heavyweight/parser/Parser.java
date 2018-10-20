@@ -1,6 +1,7 @@
 package uk.edwinek.heavyweight.parser;
 
 import uk.edwinek.heavyweight.model.Reign;
+
 import java.util.List;
 
 public interface Parser {

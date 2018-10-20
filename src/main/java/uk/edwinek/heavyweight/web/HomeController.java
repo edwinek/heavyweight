@@ -1,9 +1,12 @@
 package uk.edwinek.heavyweight.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import uk.edwinek.heavyweight.model.HeavyweightResponse;
 import uk.edwinek.heavyweight.service.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 
@@ -25,7 +28,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "query", method = RequestMethod.GET, produces = "application/json")
-    public HeavyweightResponse get(@RequestParam(value="date") String date) {
+    public HeavyweightResponse get(@RequestParam(value = "date") String date) {
         return service.getByDate(date);
     }
 

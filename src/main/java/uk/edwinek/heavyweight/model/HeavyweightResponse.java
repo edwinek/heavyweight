@@ -16,12 +16,28 @@ public class HeavyweightResponse extends BaseModel {
         this.reigns = builder.reigns;
     }
 
-    public static class Builder{
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public List<Reign> getReigns() {
+        return reigns;
+    }
+
+    public void setReigns(List<Reign> reigns) {
+        this.reigns = reigns;
+    }
+
+    public static class Builder {
 
         private String error;
         private List<Reign> reigns = new ArrayList<>();
 
-        public Builder withError(String error){
+        public Builder withError(String error) {
             this.error = error;
             return this;
         }
@@ -39,21 +55,5 @@ public class HeavyweightResponse extends BaseModel {
         public HeavyweightResponse build() {
             return new HeavyweightResponse(this);
         }
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
-
-    public List<Reign> getReigns() {
-        return reigns;
-    }
-
-    public void setReigns(List<Reign> reigns) {
-        this.reigns = reigns;
     }
 }

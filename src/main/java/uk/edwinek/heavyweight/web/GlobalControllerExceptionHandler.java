@@ -1,8 +1,6 @@
 package uk.edwinek.heavyweight.web;
 
 
-import uk.edwinek.heavyweight.exception.HeavyweightServiceDateException;
-import uk.edwinek.heavyweight.model.HeavyweightResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -11,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import uk.edwinek.heavyweight.exception.HeavyweightServiceDateException;
+import uk.edwinek.heavyweight.model.HeavyweightResponse;
 
 @ControllerAdvice
 class GlobalControllerExceptionHandler {

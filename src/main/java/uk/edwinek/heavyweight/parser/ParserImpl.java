@@ -1,6 +1,5 @@
 package uk.edwinek.heavyweight.parser;
 
-import uk.edwinek.heavyweight.model.Reign;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -9,6 +8,7 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import uk.edwinek.heavyweight.model.Reign;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,11 +21,9 @@ import java.util.List;
 @Component
 public class ParserImpl implements Parser {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private Document doc;
     private SimpleDateFormat parseFormat = new SimpleDateFormat("MMMM dd, yyyy");
-
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
 
     @Override
     public List<Reign> fromUrl(String url) {

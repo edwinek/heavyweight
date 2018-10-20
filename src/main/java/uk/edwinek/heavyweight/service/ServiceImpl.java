@@ -17,17 +17,13 @@ import java.util.List;
 @Component
 public class ServiceImpl implements Service {
 
+    private static final String REIGNS_URL = "https://en.wikipedia.org/wiki/List_of_heavyweight_boxing_champions";
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
     @Autowired
     private Parser parser;
-
     @Autowired
     private ReignRepository reignRepository;
-
     private Date earliestReign;
-
-    private static final String REIGNS_URL = "https://en.wikipedia.org/wiki/List_of_heavyweight_boxing_champions";
 
     @Override
     public void performETL() {
@@ -44,11 +40,11 @@ public class ServiceImpl implements Service {
 
         try {
             date = ISODateTimeFormat.date().parseDateTime(isoDateString).toDate();
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             throw new HeavyweightServiceDateException("Invalid date specified: [" + isoDateString + "].");
         }
 
-        if (date.after(new Date())){
+        if (date.after(new Date())) {
             throw new HeavyweightServiceDateException("Future date specified: [" + isoDateString + "].");
         }
 

@@ -1,11 +1,11 @@
 package uk.edwinek.heavyweight.persistence;
 
-import uk.edwinek.heavyweight.model.Reign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import uk.edwinek.heavyweight.model.Reign;
 
 import java.util.Date;
 import java.util.List;

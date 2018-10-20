@@ -4,11 +4,12 @@ apply plugin: 'com.bmuschko.cargo'
 
 ext {
     apacheCommonsLang3Version = '3.8.1'
+    hamcrestVersion = '2.0.0.0'
     jacksonVersion = '2.9.6'
     javaxVersion = '4.0.1'
     jodaVersion = '2.10'
     jsoupVersion = '1.11.3'
-    junitVersion = '4.12'
+    junitVersion = '5.2.0'
     mockitoVersion = '2.23.0'
     slf4jVersion = '2.11.1'
     springMongoVersion = '2.1.1.RELEASE'
@@ -28,13 +29,19 @@ dependencies {
     compile "org.springframework:spring-webmvc:${project.springVersion}"
     compile "org.springframework:spring-jdbc:${project.springVersion}"
     compile "org.springframework.data:spring-data-mongodb:${project.springMongoVersion}"
+    testCompile "org.hamcrest:java-hamcrest:${project.hamcrestVersion}"
     testCompile "org.springframework:spring-test:${project.springVersion}"
-    testCompile "junit:junit:${project.junitVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-api:${project.junitVersion}"
+    testCompile "org.junit.jupiter:junit-jupiter-engine:${project.junitVersion}"
     testCompile "org.mockito:mockito-core:${project.mockitoVersion}"
 }
 
 repositories {
     jcenter()
+}
+
+test {
+    useJUnitPlatform()
 }
 
 buildscript {
