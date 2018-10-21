@@ -41,6 +41,17 @@ repositories {
 
 test {
     useJUnitPlatform()
+    options {
+        setExcludeTags(["Integration"] as Set)
+    }
+}
+
+task integrationTest(type: Test) {
+    useJUnitPlatform {
+        includeTags 'Integration'
+    }
+    check.dependsOn it
+    shouldRunAfter test
 }
 
 buildscript {

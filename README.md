@@ -1,5 +1,5 @@
 # heavyweight
-A Spring 5 web application that allows the user to see who the heavyweight boxing champion of the world was on a specified date (and not much else!). The data is taken from Wikipedia and stuck in a document database. This database can be updated.
+A Spring 5 web application that allows the user to see who the heavyweight boxing champion of the world was on a specified date (and not much else!). The data is taken from Wikipedia and stuck in a document database. This database can be refreshed.
 
 ## System requirements (for manual deployment to local machine)
 * Java 8
@@ -33,3 +33,9 @@ A Spring 5 web application that allows the user to see who the heavyweight boxin
     * to query by date
 * Resource (GET): `/update`
     * to update the database from Wikipedia
+    
+## Tests
+* Unit tests:
+    * `./gradlew test`
+* Integration tests:
+    * `./gradlew integrationTest`
