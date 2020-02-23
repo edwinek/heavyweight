@@ -75,7 +75,7 @@ public class ParserImpl implements Parser {
                     throw new RuntimeException("Unable to parse reign began date, \"" + reignBeganString + "\": " + e.getMessage());
                 }
 
-                if (columns.get(4).text().equals("Present")) {
+                if (columns.get(4).text().equalsIgnoreCase("Present")) {
                     reignEnded = null;
                 } else {
                     try {
