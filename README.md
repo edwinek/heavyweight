@@ -29,10 +29,10 @@ A Spring 5 web application that allows the user to see who the heavyweight boxin
 
 ## Useage
 * Service will deploy to `http://localhost:8080/heavyweight`
-* Resource (GET): `/query?date=yyyy-mm-dd`
-    * to query by date
-* Resource (GET): `/update`
+* First hit Resource (GET): `/update`
     * to update the database from Wikipedia
+* Then Resource (GET): `/query?date=yyyy-mm-dd`
+    * to query by date
     
 ## Tests
 * Unit tests:

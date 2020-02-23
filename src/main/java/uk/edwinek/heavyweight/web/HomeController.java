@@ -8,18 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 import uk.edwinek.heavyweight.model.HeavyweightResponse;
 import uk.edwinek.heavyweight.service.Service;
 
-import javax.annotation.PostConstruct;
-
 @RestController
 public class HomeController {
 
     @Autowired
     private Service service;
-
-    @PostConstruct
-    public void init() {
-        service.performETL();
-    }
 
     @RequestMapping(value = "update", method = RequestMethod.GET, produces = "application/json")
     public String update() {
