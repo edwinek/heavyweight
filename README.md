@@ -1,5 +1,5 @@
 # heavyweight
-A Spring 5 web application that allows the user to see who the heavyweight boxing champion of the world was on a specified date (and not much else!). The data is taken from Wikipedia and stuck in a document database. This database can be refreshed.
+A Spring 5 web application that allows the user to see who the heavyweight boxing champion of the world was on a specified date (and not much else!). The data is taken from Wikipedia and stuck in a document database. This database can be refreshed, however seeing as the project is now pinned to a fixed version of the Wikipedia page, this is a pointless exercise.
 
 ## System requirements (for manual deployment to local machine)
 * Java 8
@@ -27,7 +27,7 @@ A Spring 5 web application that allows the user to see who the heavyweight boxin
 ## Automated Deployment
 * See the [`heavyweight-deploy` project](https://github.com/edwinek/heavyweight-deploy) for a containerised version of this project.
 
-## Useage
+## Usage
 * Service will deploy to `http://localhost:8080/heavyweight`
 * First hit Resource (GET): `/update`
     * to update the database from Wikipedia
