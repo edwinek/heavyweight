@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ContextConfiguration(classes = {ParserTestConfig.class})
 class ParserTest extends TestBase {
 
-    private static final String REIGNS_URL = "https://en.wikipedia.org/wiki/List_of_heavyweight_boxing_champions";
+    private static final String REIGNS_URL = "https://en.wikipedia.org/w/index.php?title=List_of_world_heavyweight_boxing_champions&oldid=933454562";
 
     @Autowired
     private Parser parser;
