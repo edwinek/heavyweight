@@ -18,7 +18,7 @@ import java.util.List;
 @Component
 public class ServiceImpl implements Service {
 
-    private static final String REIGNS_URL = "https://en.wikipedia.org/wiki/List_of_heavyweight_boxing_champions";
+    private static final String REIGNS_URL = "https://en.wikipedia.org/w/index.php?title=List_of_world_heavyweight_boxing_champions&oldid=933454562";
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private Parser parser;
